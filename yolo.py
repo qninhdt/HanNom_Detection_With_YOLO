@@ -1,5 +1,6 @@
 import cv2.dnn
 import numpy as np
+import os
 
 
 class YOLO:
@@ -114,5 +115,10 @@ class YOLO:
 
 if __name__ == "__main__":
     yolo = YOLO()
-    image = cv2.imread("./examples1/images/nlvnpf-0137-01-011.jpg")
-    detections = yolo.predict(image, "output.jpg")
+
+    dataset = "./examples30/images"
+
+    for img in os.listdir(dataset):
+        image = cv2.imread(os.path.join(dataset, img))
+        detections = yolo.predict(image, output=f"./results/{img}")
+        print(f"Predicted {len(detections)} objects in {img}")
