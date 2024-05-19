@@ -5,7 +5,9 @@ import numpy as np
 class YOLO:
 
     def __init__(self):
+        print("Loading YOLOv8n model...")
         self.model = cv2.dnn.readNetFromONNX("yolov8n.onnx")
+        print("Model loaded successfully")
 
     def predict(self, input_image, output=None):
         original_image = input_image.copy()

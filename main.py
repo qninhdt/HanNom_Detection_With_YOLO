@@ -126,9 +126,7 @@ if __name__ == "__main__":
             "map_2d", async_mode=True, num_classes=1
         )
         metric_fn.add(preds, targets)
-        score = metric_fn.value(iou_thresholds=np.arange(0.5, 0.75, 0.05))["mAP"]
-        # for t in range(50, 76, 5):
-        #    scores += [map_score(list_outputs, targets, 0.01*t)]
+        score = metric_fn.value(iou_thresholds=np.arange(0.5, 0.95, 0.05))["mAP"]
 
         img_score += [score]
 
